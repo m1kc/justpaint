@@ -211,29 +211,5 @@ public class ColorSelecter extends Canvas
             if (selection==2) bDown = true;
         }
     }
-    
-    /**
-     * Called when the pointer is dragged.
-     */
-    protected  void pointerDragged(int x, int y) {
-    }
-
-    /**
-     * Called when the pointer is pressed.
-     */
-    protected  void pointerPressed(int x, int y) {
-    }
-
-    /**
-     * Called when the pointer is released.
-     */
-    protected  void pointerReleased(int x, int y) {
-    }
-    
-    /**
-     * Called when action should be handled
-     */
-    public void commandAction(Command command, Displayable displayable) {
-    }
 
 }

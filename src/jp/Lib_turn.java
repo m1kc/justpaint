@@ -10,10 +10,6 @@ class Lib_turn
         766, 819, 866, 906, 940, 966, 985, 996, 1000
     };
 
-    Lib_turn()
-    {
-    }
-
     private static int cos(int i)
     {
         i %= 360;

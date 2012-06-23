@@ -88,11 +88,6 @@ class FSThread extends Thread
 
     }
 
-    public void interrupt()
-    {
-
-    }
-
     public void setMode(int m, String d)
     {
         mode=m;
