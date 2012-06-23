@@ -7,7 +7,6 @@
 *.ear
 
 # NetBeans folders #
-nbproject/
 build/
 dist/
 
