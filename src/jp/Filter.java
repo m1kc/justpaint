@@ -12,27 +12,21 @@ import javax.microedition.lcdui.Image;
  *
  * @author Makc
  */
-public class Filter
-{
+public class Filter {
+    
+    private static final String EFFECTS_SYMBOL_LIST = "gndlsbiw";
+    
     String name;
     Vector effects = new Vector();
 
     public Image appendFilter(Image iq)
     {
         Image img = iq;
-        int i;
-        String s;
-        for (i=0; i<effects.size(); i++)
-        {
-            s = (String) effects.elementAt(i);
-            if (s.equals("g")) img = Lib_effects.effect(img, 0);
-            if (s.equals("n")) img = Lib_effects.effect(img, 1);
-            if (s.equals("d")) img = Lib_effects.effect(img, 2);
-            if (s.equals("l")) img = Lib_effects.effect(img, 3);
-            if (s.equals("s")) img = Lib_effects.effect(img, 4);
-            if (s.equals("b")) img = Lib_effects.effect(img, 5);
-            if (s.equals("i")) img = Lib_effects.effect(img, 6);
-            if (s.equals("w")) img = Lib_effects.effect(img, 7);
+        for (int i = 0; i < effects.size(); i++) {
+            // Замена серии условий на табличное значение.
+            char effectSymbol = ((String) effects.elementAt(i)).charAt(0);
+            int effectId = EFFECTS_SYMBOL_LIST.indexOf(effectSymbol);
+            if (effectId != -1) img = Lib_effects.effect(img, effectId);
         }
         return img;
     }
