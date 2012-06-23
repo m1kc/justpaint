@@ -13,6 +13,19 @@ import javax.microedition.lcdui.*;
  */
 public class NewFilter extends Canvas
 {
+    
+    private static final String EFFECTS_SYMBOL_LIST = "gndlsbiw";
+    private static final String[] EFFECTS_NAME_LIST = {
+        "Обесцвечивание",
+        "Негатив",
+        "Затемнение",
+        "Осветление",
+        "Сепия",
+        "Размытие",
+        "Искажение",
+        "Черно-белый"
+    };
+    
     Vector effect = new Vector();
     int se = 0;
     int qq=1;
@@ -25,49 +38,21 @@ public class NewFilter extends Canvas
         setFullScreenMode(true);
     } 
 
-    private String toName(String k)
-    {
-        String c = "";
-        if (k.equals("g")) c = "Обесцвечивание";
-        if (k.equals("n")) c = "Негатив";
-        if (k.equals("d")) c = "Затемнение";
-        if (k.equals("l")) c = "Осветление";
-        if (k.equals("s")) c = "Сепия";
-        if (k.equals("b")) c = "Размытие";
-        if (k.equals("i")) c = "Искажение";
-        if (k.equals("w")) c = "Черно-белый";
-
-        return c;
+    private String toName(String k) {
+        // Замена серии условий на табличное значение.
+        char effectSymbol = k.charAt(0);
+        int effectId = EFFECTS_SYMBOL_LIST.indexOf(effectSymbol);
+        return EFFECTS_NAME_LIST[effectId];
     }
 
-    private String toName(int k)
+    private String toName(int effectId)
     {
-        String c = "";
-        if (k==0) c = "Обесцвечивание";
-        if (k==1) c = "Негатив";
-        if (k==2) c = "Затемнение";
-        if (k==3) c = "Осветление";
-        if (k==4) c = "Сепия";
-        if (k==5) c = "Размытие";
-        if (k==6) c = "Искажение";
-        if (k==7) c = "Черно-белый";
-
-        return c;
+        return EFFECTS_NAME_LIST[effectId];
     }
 
     private String toCode(int k)
     {
-        String c = "";
-        if (k==0) c = "g";
-        if (k==1) c = "n";
-        if (k==2) c = "d";
-        if (k==3) c = "l";
-        if (k==4) c = "s";
-        if (k==5) c = "b";
-        if (k==6) c = "i";
-        if (k==7) c = "w";
-
-        return c;
+        return String.valueOf(EFFECTS_SYMBOL_LIST.charAt(k));
     }
 
     /**
@@ -114,8 +99,7 @@ public class NewFilter extends Canvas
         {
             Vector e = new Vector();
             Filter f = new Filter();
-            int j;
-            for (j=0; j<effect.size(); j++)
+            for (int j=0; j<effect.size(); j++)
             {
                 e.addElement(effect.elementAt(j));
             }
@@ -126,42 +110,6 @@ public class NewFilter extends Canvas
             effect.removeAllElements();
             JustPaint.display.setCurrent(JustPaint.fl);
         }
-    }
-    
-    /**
-     * Called when a key is released.
-     */
-    protected  void keyReleased(int keyCode) {
-    }
-
-    /**
-     * Called when a key is repeated (held down).
-     */
-    protected  void keyRepeated(int keyCode) {
-    }
-    
-    /**
-     * Called when the pointer is dragged.
-     */
-    protected  void pointerDragged(int x, int y) {
-    }
-
-    /**
-     * Called when the pointer is pressed.
-     */
-    protected  void pointerPressed(int x, int y) {
-    }
-
-    /**
-     * Called when the pointer is released.
-     */
-    protected  void pointerReleased(int x, int y) {
-    }
-    
-    /**
-     * Called when action should be handled
-     */
-    public void commandAction(Command command, Displayable displayable) {
     }
 
 }

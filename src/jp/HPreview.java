@@ -52,15 +52,20 @@ public final class HPreview extends Canvas
      */
     public void paint(Graphics g)
     {
+        final int width = getWidth();
+        final int height = getHeight();
+        final int nameFontHeight = MainCanvas.nameFont.getHeight();
+         
         g.setColor(128,128,128);
-        g.fillRect(0, 0, getWidth(), getHeight());
-        g.drawImage(hr, getWidth()/2-hr.getWidth()/2, getHeight()/2-hr.getHeight()/2, Graphics.LEFT | Graphics.TOP);
+        g.fillRect(0, 0, width, height);
+        g.drawImage(hr, width/2-hr.getWidth()/2, height/2-hr.getHeight()/2, Graphics.LEFT | Graphics.TOP);
         g.setColor(255,255,255);
-        g.fillRect(0, getHeight()-MainCanvas.nameFont.getHeight()*3, getWidth()/2, MainCanvas.nameFont.getHeight()*3);
+       
+        g.fillRect(0, height-nameFontHeight*3, width/2, nameFontHeight*3);
         g.setColor(0,0,0);
-        g.drawString(widthString+x, 0, getHeight()-MainCanvas.nameFont.getHeight()*3, Graphics.LEFT | Graphics.TOP);
-        g.drawString(heightString+y, 0, getHeight()-MainCanvas.nameFont.getHeight()*2, Graphics.LEFT | Graphics.TOP);
-        g.drawString(angleString+angle, 0, getHeight()-MainCanvas.nameFont.getHeight(), Graphics.LEFT | Graphics.TOP);
+        g.drawString(widthString+x, 0, height-nameFontHeight*3, Graphics.LEFT | Graphics.TOP);
+        g.drawString(heightString+y, 0, height-nameFontHeight*2, Graphics.LEFT | Graphics.TOP);
+        g.drawString(angleString+angle, 0, height-nameFontHeight, Graphics.LEFT | Graphics.TOP);
 
         repaint();
     }
@@ -71,17 +76,17 @@ public final class HPreview extends Canvas
     protected  void keyPressed(int keyCode)
     {
         if (keyCode==KEY_NUM4) x--;
-        if (keyCode==KEY_NUM6) x++;
-        if (keyCode==KEY_NUM2) y--;
-        if (keyCode==KEY_NUM8) y++;
-        if (keyCode==KEY_NUM1) angle--;
-        if (keyCode==KEY_NUM3) angle++;
+        else if (keyCode==KEY_NUM6) x++;
+        else if (keyCode==KEY_NUM2) y--;
+        else if (keyCode==KEY_NUM8) y++;
+        else if (keyCode==KEY_NUM1) angle--;
+        else if (keyCode==KEY_NUM3) angle++;
 
         if (x<1) x=1;
         if (y<1) y=1;
 
-        if (angle==-1) angle=359;
-        if (angle==360) angle=0;
+        if (angle == -1) angle=359;
+        else if (angle == 360) angle=0;
 
         genHren();
 
@@ -99,12 +104,6 @@ public final class HPreview extends Canvas
             JustPaint.display.setCurrent(JustPaint.c);
         }
     }
-    
-    /**
-     * Called when a key is released.
-     */
-    protected  void keyReleased(int keyCode) {
-    }
 
     /**
      * Called when a key is repeated (held down).
@@ -112,34 +111,16 @@ public final class HPreview extends Canvas
     protected  void keyRepeated(int keyCode)
     {
         if (keyCode==KEY_NUM4) x--;
-        if (keyCode==KEY_NUM6) x++;
-        if (keyCode==KEY_NUM2) y--;
-        if (keyCode==KEY_NUM8) y++;
-        if (keyCode==KEY_NUM1) angle--;
-        if (keyCode==KEY_NUM3) angle++;
+        else if (keyCode==KEY_NUM6) x++;
+        else if (keyCode==KEY_NUM2) y--;
+        else if (keyCode==KEY_NUM8) y++;
+        else if (keyCode==KEY_NUM1) angle--;
+        else if (keyCode==KEY_NUM3) angle++;
 
         if (x<1) x=1;
         if (y<1) y=1;
 
         genHren();
-    }
-    
-    /**
-     * Called when the pointer is dragged.
-     */
-    protected  void pointerDragged(int x, int y) {
-    }
-
-    /**
-     * Called when the pointer is pressed.
-     */
-    protected  void pointerPressed(int x, int y) {
-    }
-
-    /**
-     * Called when the pointer is released.
-     */
-    protected  void pointerReleased(int x, int y) {
     }
 
 }

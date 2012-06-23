@@ -46,40 +46,5 @@ public class HeapIndicator extends Canvas
     {
         if (keyCode==-7) JustPaint.display.setCurrent(JustPaint.c);
     }
-    
-    /**
-     * Called when a key is released.
-     */
-    protected  void keyReleased(int keyCode)
-    {
-    }
-
-    /**
-     * Called when a key is repeated (held down).
-     */
-    protected  void keyRepeated(int keyCode)
-    {
-    }
-    
-    /**
-     * Called when the pointer is dragged.
-     */
-    protected  void pointerDragged(int x, int y)
-    {
-    }
-
-    /**
-     * Called when the pointer is pressed.
-     */
-    protected  void pointerPressed(int x, int y)
-    {
-    }
-
-    /**
-     * Called when the pointer is released.
-     */
-    protected  void pointerReleased(int x, int y)
-    {
-    }
 
 }

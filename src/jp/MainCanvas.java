@@ -883,7 +883,7 @@ public final class MainCanvas extends Canvas
 
           if (brush==25)
           {
-              Fill.img = getImage();
+              Fill.setimage(getImage());
               Fill.prepare(x, y);
               setImage(Fill.fill(x, y, JustPaint.r, JustPaint.g, JustPaint.b, true));
           }

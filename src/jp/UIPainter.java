@@ -32,14 +32,16 @@ public class UIPainter
     {
         Displayable d = JustPaint.display.getCurrent();
         Font f = g.getFont();
+        final int width = d.getWidth();
+        final int height = d.getHeight();
+        final int deltaW = width-f.stringWidth(text);
+        final int deltaH = height-f.getHeight();
 
         g.setColor(0,0,0);
-        g.fillRect(d.getWidth()-f.stringWidth(text), d.getHeight()-f.getHeight(), f.stringWidth(text), f.getHeight());
-        g.fillTriangle(d.getWidth()-f.stringWidth(text), d.getHeight()-f.getHeight(),
-                d.getWidth()-f.stringWidth(text), d.getHeight(),
-                d.getWidth()-f.stringWidth(text)-f.getHeight(), d.getHeight());
+        g.fillRect(deltaW, deltaH, f.stringWidth(text), f.getHeight());
+        g.fillTriangle(deltaW, deltaH, deltaW, height, deltaW-f.getHeight(), height);
         g.setColor(0xFFFFFF);
-        g.drawString(text, d.getWidth(), d.getHeight(), Graphics.RIGHT | Graphics.BOTTOM);
+        g.drawString(text, width, height, Graphics.RIGHT | Graphics.BOTTOM);
     }
 
     public static void paintSoftkeys(Graphics g, String left, String right)
