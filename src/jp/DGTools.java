@@ -44,7 +44,7 @@ public class DGTools
         }
     }
 
-    public static void setColor(Graphics graphics,int a,int r,int g,int b)
+    public static void setColor(Graphics graphics, int a, int r, int g, int b)
     {
         try
         {
@@ -55,8 +55,8 @@ public class DGTools
         }
     }
 
-    public static int color(int alpha, int r, int g, int b)
+    private static int color(int alpha, int r, int g, int b)
     {
-        return (alpha << 24) + (r << 16) + (g << 8) + b;
+        return (alpha << 24) | (r << 16) | (g << 8) | b;
     }
 }
