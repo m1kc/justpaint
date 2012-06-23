@@ -87,6 +87,7 @@ public class JustPaint extends MIDlet
             midlet = this; i=102;
             display = Display.getDisplay(this); i=103;
             l10n.LocalizationSupport.initLocalizationSupport(); i=104;
+            //showDebugInfo(null, null, null, System.getProperty("microedition.locale")); if(true)return;
             // конструкторы
             ss = new StartScreen(); i=201;
             id = new ImageDispatcher(); i=202;
