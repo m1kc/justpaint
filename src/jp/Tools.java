@@ -269,8 +269,9 @@ public class Tools
             for (j=0; j<height; j++)
             {
                 final int pix = pixel[j * width + i];
-                int qa = (pixel[j * width + i] >> 24) & 0xff;
-                qa = 128 * (height-j) / height;
+                //int qa = (pixel[j * width + i] >> 24) & 0xff;
+                //qa = 128 * (height-j) / height;
+                int qa = 128 * (height-j) / height;
 
                 pixel[j * width + i] = (qa << 24) | (pix & 0x00FFFFFF);
             }

@@ -38,7 +38,8 @@ public class NewFilter extends Canvas
         setFullScreenMode(true);
     } 
 
-    private String toName(String k) {
+    private String toName(String k)
+    {
         // Замена серии условий на табличное значение.
         char effectSymbol = k.charAt(0);
         int effectId = EFFECTS_SYMBOL_LIST.indexOf(effectSymbol);
