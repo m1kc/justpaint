@@ -1,0 +1,167 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package jp;
+
+import java.util.Vector;
+import javax.microedition.lcdui.*;
+
+/**
+ * @author Makc
+ */
+public class NewFilter extends Canvas
+{
+    Vector effect = new Vector();
+    int se = 0;
+    int qq=1;
+
+    /**
+     * constructor
+     */
+    public NewFilter()
+    {
+        setFullScreenMode(true);
+    } 
+
+    private String toName(String k)
+    {
+        String c = "";
+        if (k.equals("g")) c = "Обесцвечивание";
+        if (k.equals("n")) c = "Негатив";
+        if (k.equals("d")) c = "Затемнение";
+        if (k.equals("l")) c = "Осветление";
+        if (k.equals("s")) c = "Сепия";
+        if (k.equals("b")) c = "Размытие";
+        if (k.equals("i")) c = "Искажение";
+        if (k.equals("w")) c = "Черно-белый";
+
+        return c;
+    }
+
+    private String toName(int k)
+    {
+        String c = "";
+        if (k==0) c = "Обесцвечивание";
+        if (k==1) c = "Негатив";
+        if (k==2) c = "Затемнение";
+        if (k==3) c = "Осветление";
+        if (k==4) c = "Сепия";
+        if (k==5) c = "Размытие";
+        if (k==6) c = "Искажение";
+        if (k==7) c = "Черно-белый";
+
+        return c;
+    }
+
+    private String toCode(int k)
+    {
+        String c = "";
+        if (k==0) c = "g";
+        if (k==1) c = "n";
+        if (k==2) c = "d";
+        if (k==3) c = "l";
+        if (k==4) c = "s";
+        if (k==5) c = "b";
+        if (k==6) c = "i";
+        if (k==7) c = "w";
+
+        return c;
+    }
+
+    /**
+     * paint
+     */
+    public void paint(Graphics g) 
+    {
+        g.setFont(MainCanvas.nameFont);
+
+        g.setColor(255,255,255);
+        g.fillRect(0, 0, getWidth(), getHeight());
+        UIPainter.paintBackground(g);
+
+        g.setColor(0,0,0);
+
+        int i;
+        String s;
+        for (i=0; i<effect.size(); i++)
+        {
+            s = (String) effect.elementAt(i);
+            s = toName(s);
+            g.drawString(s, 5, i*MainCanvas.nameFont.getHeight(), Graphics.LEFT | Graphics.TOP);
+        }
+
+        g.drawString("< "+toName(se)+" >", getWidth()/2, getHeight()-MainCanvas.nameFont.getHeight()*2, Graphics.HCENTER | Graphics.TOP);
+        //g.drawString("0 - сохранить", getWidth()/2, getHeight()-MainCanvas.nameFont.getHeight(), Graphics.HCENTER | Graphics.TOP);
+        UIPainter.paintRightSoft(g, "Создать");
+
+        repaint();
+    }
+    
+    /**
+     * Called when a key is pressed.
+     */
+    protected  void keyPressed(int keyCode) 
+    {
+        if (keyCode==KEY_NUM4 || keyCode==-3) se--;
+        if (keyCode==KEY_NUM6 || keyCode==-4) se++;
+        if (se<0) se=0;
+        if (se>7) se=7;
+
+        if (keyCode==KEY_NUM5 || keyCode==-5) effect.addElement(toCode(se));
+        if (keyCode==-7)
+        {
+            Vector e = new Vector();
+            Filter f = new Filter();
+            int j;
+            for (j=0; j<effect.size(); j++)
+            {
+                e.addElement(effect.elementAt(j));
+            }
+            f.effects = e;
+            f.name = "Фильтр "+qq;
+            qq++;
+            JustPaint.fl.filters.addElement(f);
+            effect.removeAllElements();
+            JustPaint.display.setCurrent(JustPaint.fl);
+        }
+    }
+    
+    /**
+     * Called when a key is released.
+     */
+    protected  void keyReleased(int keyCode) {
+    }
+
+    /**
+     * Called when a key is repeated (held down).
+     */
+    protected  void keyRepeated(int keyCode) {
+    }
+    
+    /**
+     * Called when the pointer is dragged.
+     */
+    protected  void pointerDragged(int x, int y) {
+    }
+
+    /**
+     * Called when the pointer is pressed.
+     */
+    protected  void pointerPressed(int x, int y) {
+    }
+
+    /**
+     * Called when the pointer is released.
+     */
+    protected  void pointerReleased(int x, int y) {
+    }
+    
+    /**
+     * Called when action should be handled
+     */
+    public void commandAction(Command command, Displayable displayable) {
+    }
+
+}
