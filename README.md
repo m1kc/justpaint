@@ -25,3 +25,20 @@ Russian description
 - Кнопка `0` - переключение между стандартным и "своим" набором инструментов.
 - Кнопка камеры - эффекты: обесцвечивание, негатив, затемнение, осветление, сепия, размытие, искажение, черно-белое изображение, регулировка каналов, регулировка насыщенности, поворот на произвольный угол, солнце, изъеденная бумага.
 - Правая софт-клавиша - меню.
+
+
+Tested on
+---------
+
+* SonyEricsson K770i
+* SonyEricsson U100i (Yari)
+* SonyEricsson G502
+* SonyEricsson K850
+* SonyEricsson C702
+* Samsung C3600i
+* SonyEricsson C510
+* SonyEricsson K550i
+* SonyEricsson W610
+* SonyEricsson K800i
+* SonyEricsson K750
+* SonyEricsson U10i (Aino)
