@@ -1,4 +1,4 @@
-JustPaint (branch 1.x)
-======================
+JustPaint
+=========
 
 Graphic editor for J2ME platform.
